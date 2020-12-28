@@ -6,30 +6,38 @@ import cv2
 
 def initialize_gpio():
     GPIO.setwarnings(False)
-    GPIO.setmode(GPIO.BCM)
+    GPIO.setmode(GPIO.BOARD)
+if __name__ == '__main__':
 
-initialize_gpio()
+    initialize_gpio()
 
-pan_tilt = CameraPanTilt(3,2)
-pan_tilt.start()
-time.sleep(1)
+    pan_tilt = CameraPanTilt(5,3)
+    pan_tilt.start()
+    time.sleep(1)
 
-image = pan_tilt.take_camera_shot()
+    image = pan_tilt.take_camera_shot()
 
-cv2.imshow("Image",image)
-cv2.waitKey(0)
+    cv2.imshow("Image",image)
+    cv2.waitKey(0)
 
-pan_tilt.set_angles(45,90)
-image = pan_tilt.take_camera_shot()
+    pan_tilt.set_angles(-45,-45)
+    image = pan_tilt.take_camera_shot()
 
-cv2.imshow("Image",image)
-cv2.waitKey(0)
+    cv2.imshow("Image",image)
+    cv2.waitKey(0)
 
-pan_tilt.set_angles(135,45)
+    pan_tilt.set_angles(0,0)
 
-image = pan_tilt.take_camera_shot()
+    image = pan_tilt.take_camera_shot()
 
-cv2.imshow("Image",image)
-cv2.waitKey(0)
+    cv2.imshow("Image",image)
+    cv2.waitKey(0)
 
-pan_tilt.stop()
+    pan_tilt.set_angles(45,45)
+
+    image = pan_tilt.take_camera_shot()
+
+    cv2.imshow("Image",image)
+    cv2.waitKey(0)
+
+    pan_tilt.stop()
