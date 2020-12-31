@@ -1,22 +1,21 @@
 import RPi.GPIO as GPIO
-from components.servo import ServoMotor
+from components.servo2 import ServoMotor
 import time
 
 if __name__ == '__main__':
-    GPIO.setmode(GPIO.BOARD)
-    servo = ServoMotor(3, -45, 45)
+    servo = ServoMotor(0, min_angle=-45, max_angle=45)
     servo.start()
 
 try:
     while True:
         servo.set_angle(0)
-        time.sleep(3)
+        time.sleep(0.5)
         servo.set_angle(-45)
-        time.sleep(3)
+        time.sleep(0.5)
         servo.set_angle(0)
-        time.sleep(3)
+        time.sleep(0.5)
         servo.set_angle(45)
-        time.sleep(3)
+        time.sleep(0.5)
         # set_angle(45)
         # time.sleep(0.5)
         # set_angle(90)
@@ -26,6 +25,5 @@ try:
         # set_angle(180)
         # time.sleep(0.5)
 except KeyboardInterrupt:
-
     servo.stop()
-    GPIO.cleanup()
+

@@ -1,3 +1,4 @@
 {
-  "pan_tilt_pins": [2,3]
+  "pan_tilt_channels": [1,0],
+  "dc_motor_channels": [1,0]
 }

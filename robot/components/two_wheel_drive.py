@@ -2,9 +2,9 @@ from components.dc_motor import DCMotor
 
 class TwoWheelDrive:
 
-    def __init__(self, ic2_address=0x40):
-        self.left_motor = DCMotor(1, ic2_address=ic2_address)
-        self.right_motor = DCMotor(0, ic2_address=ic2_address)
+    def __init__(self,left_motor_channel=1,right_motor_channel=0, i2c_address=0x40):
+        self.left_motor = DCMotor(left_motor_channel, i2c_address=i2c_address)
+        self.right_motor = DCMotor(right_motor_channel, i2c_address=i2c_address)
 
     def stop(self):
         self.left_motor.stop()
