@@ -6,6 +6,7 @@ dc_motor_info = [
     dict(pwm_idx=5, in1=3, in2=4)
 ]
 
+
 class DCMotor:
 
     def __init__(self, motor_idx, i2c_address=0x40, min_speed=30, max_speed=80):
@@ -16,6 +17,9 @@ class DCMotor:
         self.in2 = dc_motor_info[motor_idx]['in2']
         self.min_speed = min_speed
         self.max_speed = max_speed
+
+    def start(self):
+        self.stop()
 
     def stop(self):
         self.pwm.setDutycycle(self.pwm_idx, 0)

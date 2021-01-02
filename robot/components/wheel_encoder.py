@@ -21,6 +21,9 @@ class WheelEncoder:
     def reset(self):
         self.pulse_count = 0
 
+    def start(self):
+        pass
+
     def stop(self):
         self.encoder.close()
 
