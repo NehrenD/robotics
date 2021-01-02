@@ -2,7 +2,7 @@ from components.sensor_pack import SensorPack
 import time
 
 if __name__ == '__main__':
-    sensor_pack = SensorPack((12,16),(20,21))
+    sensor_pack = SensorPack((27,22),(4,17))
 
     try:
         while True:

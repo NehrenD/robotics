@@ -1,4 +1,6 @@
 {
   "pan_tilt_channels": [1,0],
-  "dc_motor_channels": [1,0]
+  "dc_motor_channels": [1,0],
+  "sensor_pack_pins" : [[27,22],[4,17]],
+  "encoders_pins": [20,21]
 }

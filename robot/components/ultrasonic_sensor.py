@@ -34,3 +34,7 @@ class UltrasonicSensor:
         pulse_duration = pulse_end - pulse_start
         distance = round(pulse_duration * UltrasonicSensor.HALF_SOUND_SPEED_CM, 2)
         return distance
+
+    def stop(self):
+        self.trig_device.close()
+        self.echo_device.close()
