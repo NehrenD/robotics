@@ -9,7 +9,7 @@ dc_motor_info = [
 
 class DCMotor:
 
-    def __init__(self, motor_idx, i2c_address=0x40, min_speed=30, max_speed=80):
+    def __init__(self, motor_idx, i2c_address=0x40, min_speed=0, max_speed=80):
         self.pwm = PCA9685(i2c_address)
         self.pwm.setPWMFreq(50)
         self.pwm_idx = dc_motor_info[motor_idx]['pwm_idx']

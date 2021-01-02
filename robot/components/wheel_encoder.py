@@ -7,6 +7,10 @@ class WheelEncoder:
     PULSES_PER_REVOLUTION = 40
     PULSES_TO_MM = (math.pi / PULSES_PER_REVOLUTION) * WHEEL_DIAMETER_MM
 
+    @classmethod
+    def get_pulses_for_distance(cls, distance_mm):
+        return int(distance_mm/cls.PULSES_TO_MM)
+
     def __init__(self, encoder_pin):
         self.pulse_count = 0
         self.direction = 1

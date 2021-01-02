@@ -67,3 +67,6 @@ class TwoWheelDrive:
 
     def get_encoder_distances(self):
         return self.left_encoder.get_distance_mm(), self.right_encoder.get_distance_mm()
+
+    def get_encoder_pulses(self):
+        return self.left_encoder.pulse_count, self.right_encoder.pulse_count
