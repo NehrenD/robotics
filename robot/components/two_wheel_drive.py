@@ -5,9 +5,14 @@ import numpy as np
 
 class TwoWheelDrive:
 
+    WHEEL_DIAMETER_MM = 69
+    TICKS_PER_REVOLUTIONS = 40
+    WHEEL_DISTANCE_MM = 130
+
     def __init__(self, left_motor_channel, right_motor_channel, left_encoder_pin, right_encoder_pin, i2c_address=0x40):
         self.left_motor = DCMotor(left_motor_channel, i2c_address=i2c_address)
         self.right_motor = DCMotor(right_motor_channel, i2c_address=i2c_address)
+        WheelEncoder.set_constants(TwoWheelDrive.WHEEL_DIAMETER_MM, TwoWheelDrive.TICKS_PER_REVOLUTIONS)
         self.left_encoder = WheelEncoder(left_encoder_pin)
         self.right_encoder = WheelEncoder(right_encoder_pin)
 
@@ -52,11 +57,13 @@ class TwoWheelDrive:
         self.set_right_speed(speed)
 
     def set_left_speed(self, speed):
-        self.left_encoder.set_direction(np.sign(speed))
+        direction = np.sign(speed) if speed != 0 else 1
+        self.left_encoder.set_direction(direction)
         self.left_motor.set_speed(speed)
 
     def set_right_speed(self, speed):
-        self.right_encoder.set_direction(np.sign(speed))
+        direction = np.sign(speed) if speed != 0 else 1
+        self.right_encoder.set_direction(direction)
         self.right_motor.set_speed(speed)
 
     def get_left_distance(self):

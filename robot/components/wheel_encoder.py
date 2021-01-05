@@ -3,13 +3,15 @@ import math
 
 
 class WheelEncoder:
-    WHEEL_DIAMETER_MM = 70
-    PULSES_PER_REVOLUTION = 40
-    PULSES_TO_MM = (math.pi / PULSES_PER_REVOLUTION) * WHEEL_DIAMETER_MM
+    ticks_to_mm_const = None
 
-    @classmethod
-    def get_pulses_for_distance(cls, distance_mm):
-        return int(distance_mm/cls.PULSES_TO_MM)
+    @staticmethod
+    def mm_to_ticks(mm):
+        return int(mm/WheelEncoder.ticks_to_mm_const)
+
+    @staticmethod
+    def set_constants(wheel_diameter, ticks_per_revolution):
+        WheelEncoder.ticks_to_mm_const = (math.pi/ticks_per_revolution)*wheel_diameter
 
     def __init__(self, encoder_pin):
         self.pulse_count = 0
@@ -31,8 +33,8 @@ class WheelEncoder:
     def stop(self):
         self.encoder.close()
 
-    def get_distance_mm(self):
-        return self.pulse_count * WheelEncoder.PULSES_TO_MM
+    def distance_in_mm(self):
+        return self.pulse_count * WheelEncoder.ticks_to_mm_const
 
     def encoder_changed(self, ticks, state):
         self.pulse_count += self.direction

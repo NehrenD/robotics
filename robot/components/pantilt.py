@@ -6,7 +6,7 @@ from .servo2 import ServoMotor
 class CameraPanTilt:
 
     def __init__(self, pan_servo_channel, tilt_servo_channel, initial_angles=(0, 0)):
-        self.camera = Camera((640, 480),flip_image=True)
+        #self.camera = Camera((640, 480),flip_image=True)
         self.pan_servo = ServoMotor(pan_servo_channel,min_angle=-45,max_angle=45, initial_angle=initial_angles[0])
         self.tilt_servo = ServoMotor(tilt_servo_channel, min_angle=-45,max_angle=45, initial_angle=initial_angles[1])
 

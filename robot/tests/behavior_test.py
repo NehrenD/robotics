@@ -1,6 +1,5 @@
-import atexit
 from components.robot import Robot
-from parameters import Parameters
+from utils.parameters import Parameters
 from behaviors.drive_distance import DriveDistanceBehavior
 
 if __name__ == '__main__':

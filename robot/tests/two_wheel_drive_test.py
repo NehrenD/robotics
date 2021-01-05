@@ -1,7 +1,7 @@
 from components.two_wheel_drive import TwoWheelDrive
 import time
 
-tw_drive = TwoWheelDrive()
+tw_drive = TwoWheelDrive(1,0,20,21)
 
 print("forward 2 s")
 tw_drive.move_forward(40)
